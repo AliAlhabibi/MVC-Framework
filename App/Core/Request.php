@@ -7,14 +7,14 @@ class Request{
     private $params;
     private $ip;
     private $method;
-    private  $uri;
+    private $uri;
 
     public function __construct() {
         $this->agent = $_SERVER['HTTP_USER_AGENT'];
         $this->params = $_REQUEST;
         $this->ip = $_SERVER['REMOTE_ADDR'];
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->method = strtolower($_SERVER['REQUEST_METHOD']);
+        $this->uri = strtok($_SERVER['REQUEST_URI'], '?');
     }
     public function getip()
     {

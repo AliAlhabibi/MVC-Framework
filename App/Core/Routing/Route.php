@@ -37,5 +37,7 @@ class Route{
     public static function routes()
     {
         return self::$routes;
+        //return array(array('methods' =>array('get','post'),'uri'=> '/myuri', 'action' => 'my action'));
     }
 }
+

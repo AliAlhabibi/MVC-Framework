@@ -1,9 +1,11 @@
 <?php
 
-use App\Core\Routing\Route;
+//use App\Core\Routing\Route;
+use App\Core\Routing\Router;
 
-include "bootstrap/bootstrap.php";
+include "bootstrap/init.php";
 
 //echo 1231232;   
 
-print_r(Route::routes());
+$router = new Router();
+$router->run();
