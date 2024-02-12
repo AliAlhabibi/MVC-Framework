@@ -15,9 +15,16 @@ class Router{
         $this->routes = Route::routes();
         $this->request = new Request();
         $this->current_route = $this->findRoute($this->request) ?? null;
+        $this->runMiddleware($this->current_route['middleware']);
     }
 
 
+    private function runMiddleware($middlewares){
+        foreach($middlewares as $middleware){
+            $middleware_object = new $middleware;
+            $middleware_object->handle();
+        }
+    }
     public function findRoute(Request $request){
         //echo $request->getmethod(). ' '. $request->geturi();
         foreach($this->routes as $route){
